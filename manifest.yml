@@ -1,0 +1,13 @@
+applications:
+- name: accesslog-formatter
+  path: target/accesslog-formatter-0.0.1-SNAPSHOT.jar
+  instances: 0
+  memory: 768m
+  no-route: true
+  health-check-type: process
+  services:
+  - accesslog-formatter
+  - accesslog-formatter-scheduler
+  - job-db
+  env:
+    JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+}}'

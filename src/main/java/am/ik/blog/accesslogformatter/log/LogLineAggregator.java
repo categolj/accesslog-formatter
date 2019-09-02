@@ -18,8 +18,7 @@ public class LogLineAggregator implements LineAggregator<JsonNode> {
     public String aggregate(JsonNode node) {
         final OffsetDateTime dateTime = OffsetDateTime.parse(node.get("_source").get("@timestamp").asText());
         final String path = node.get("_source").get("path").asText();
-        final int second = dateTime.getSecond();
-        final OffsetDateTime offsetDateTime = dateTime.withNano(0).withSecond((second % 2) * 30).withMinute(0);
+        final OffsetDateTime offsetDateTime = dateTime.withNano(0).withSecond(0).withMinute(0);
         this.jobData.setTimestamp(offsetDateTime);
         return String.format("%s,%s", path, offsetDateTime);
     }

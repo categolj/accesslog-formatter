@@ -28,7 +28,7 @@ public class JobData {
     public Stream<Instant> timestamps() {
         return Stream.iterate(this.start,
             offsetDateTime -> offsetDateTime.isBefore(end),
-            x -> x.plusMinutes(30))
+            x -> x.plusHours(1))
             .map(OffsetDateTime::toInstant);
     }
 }

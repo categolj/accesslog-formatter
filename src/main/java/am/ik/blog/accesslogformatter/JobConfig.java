@@ -112,7 +112,7 @@ public class JobConfig {
     @Bean
     public Step formatPromQL() {
         return stepBuilderFactory.get("formatPromQL") //
-            .tasklet(new FormatterTasklet(this.props.getJsonResource(), this.props.getPromqlResource()))
+            .tasklet(new FormatterTasklet(this.props.getJsonResource(), this.props.getPromqlResource(), this.jobData()))
             .listener(itemListenerSupport)
             .build();
     }

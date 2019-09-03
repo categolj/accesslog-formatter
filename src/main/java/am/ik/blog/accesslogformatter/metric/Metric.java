@@ -25,6 +25,6 @@ public class Metric {
     public Map<String, ?> format() {
         return Map.of(
             "metric", Map.of("path", this.path),
-            "values", this.valueMap.entrySet().stream().map(e -> List.of(e.getKey().getEpochSecond(), String.valueOf(e.getValue()))).collect(Collectors.toList()));
+            "values", this.valueMap.entrySet().stream().map(e -> List.of(e.getKey().getEpochSecond(), e.getValue())).collect(Collectors.toList()));
     }
 }
